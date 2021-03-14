@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { Client } from './client.interface';
 import { ClientService } from './client.service';
 
@@ -6,8 +6,16 @@ import { ClientService } from './client.service';
 export class ClientController {
   constructor(private readonly clientService: ClientService) {}
 
+  @Get(':id')
+  getClient(@Param('id') id: string): Client {
+    return this.clientService.getClient(id);
+  }
+
   @Get()
-  getClient(): Client {
-    return this.clientService.getClient();
+  getClients(
+    @Query('name') name?: string,
+    @Query('gender') gender?: string,
+  ): Client[] {
+    return this.clientService.getClients(name, gender);
   }
 }

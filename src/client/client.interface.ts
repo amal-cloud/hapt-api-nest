@@ -8,12 +8,18 @@ export enum UidType {
   OTHER = 4,
 }
 
+export enum GenderType {
+  MALE = 'm',
+  FEMALE = 'f',
+}
+
 export interface Client extends Lead {
   fullname: string;
   uid: {
     value: string;
     type: UidType;
   };
+  gender: GenderType;
   birthdate?: Date;
   scolar: {
     level: number;
