@@ -9,7 +9,6 @@ import {
   Delete,
   Query,
 } from '@nestjs/common';
-import { type } from 'os';
 import { Lead } from './lead.interface';
 import { LeadService } from './lead.service';
 import { LeadDocument } from './schemas/lead.schema';
